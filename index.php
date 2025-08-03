@@ -1,0 +1,357 @@
+<?php
+require_once 'koneksi.php';
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Ambil SEMUA produk dari kategori 'Popular' (ID=1) untuk slider Best Seller
+$best_sellers = [];
+$sql_best_sellers = "
+    SELECT id, name, price, image 
+    FROM products 
+    WHERE category_id = 1 
+    ORDER BY created_at DESC"; // LIMIT 3 dihapus
+
+$hasil_best_sellers = $koneksi->query($sql_best_sellers);
+
+if ($hasil_best_sellers === false) {
+    die("Gagal mengambil data produk best seller: " . $koneksi->error);
+}
+if ($hasil_best_sellers->num_rows > 0) {
+    while($row = $hasil_best_sellers->fetch_assoc()) {
+        $best_sellers[] = $row;
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chocloud by Nadi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+        body { 
+            font-family: "Poppins", sans-serif; 
+            color: #3D2314; /* Warna teks utama */
+        }
+        .product-card { 
+            background-color: white; 
+            border-radius: 0.75rem; 
+            border: 1px solid #f0e9e1; 
+            overflow: hidden; 
+            transition: all 0.3s ease-in-out; 
+        }
+        .product-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.07); 
+        }
+        
+        /* Penyesuaian agar script tailwind mengenali warna custom */
+        .bg-brand-cream { background-color: #f4c97a; }
+        .bg-brand-ivory { background-color: #F8F5F1; }
+        .bg-brand-darkbrown { background-color: #3D2314; }
+        .text-brand-darkbrown { color: #3D2314; }
+        .btn-dark { background-color: #3D2314; color: white; }
+        .btn-dark:hover { background-color: #2a150b; }
+
+         /* CSS untuk kontrol Swiper.js */
+        .swiper-pagination-bullet-active { background-color: #3D2314 !important; }
+        .swiper-controls { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; }
+        .swiper-nav-buttons { display: flex; gap: 0.75rem; }
+        .swiper-button-next, .swiper-button-prev {
+            position: static; width: 44px; height: 44px; margin: 0;
+            background-color: white; border-radius: 9999px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); color: #3D2314;
+        }
+        .swiper-button-next:after, .swiper-button-prev:after { font-size: 16px; font-weight: bold; }
+        .swiper-pagination { position: static; width: auto; }
+        .swiper-slide { height: auto; }
+    </style>
+</head>
+<body class="bg-brand-ivory">
+     <nav class="bg-[#4a2511] flex justify-between items-center px-6 md:px-20 py-3 fixed w-full top-0 z-50 shadow-lg">
+        <a href="index.php">
+            <img src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754056451/logo_iwztru.png" alt="Chocloud Logo" class="h-12 w-auto">
+        </a>
+        <ul class="hidden md:flex space-x-8 text-white text-sm font-light items-center">
+            <li><a href="index.php" class="text-[#f4c97a] font-semibold transition-colors">Home</a></li>
+            <li class="relative group py-4">
+            <a href="tentang.php" class="hover:text-[#f4c97a] transition-colors inline-flex items-center gap-1.5">
+                Tentang
+                <i class="fas fa-chevron-down text-xs opacity-70"></i>
+            </a>
+            <ul class="absolute left-0 top-full w-48 bg-white text-gray-800 rounded-md shadow-lg py-1 hidden group-hover:block z-10">
+                <li><a href="tentang.php#sejarah" class="block px-4 py-2 text-sm hover:bg-gray-100">Sejarah</a></li>
+                <li><a href="tentang.php#visi-misi" class="block px-4 py-2 text-sm hover:bg-gray-100">Visi & Misi</a></li>
+            </ul>
+        </li>
+            <li><a href="informasi.php" class="hover:text-[#f4c97a] transition-colors">Informasi</a></li>
+            <li><a href="produk.php" class="hover:text-[#f4c97a] transition-colors">Produk</a></li>
+        </ul>
+        <div class="text-white text-2xl cursor-pointer md:hidden"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <nav class="bg-[#4a2511] flex justify-between items-center px-6 md:px-20 py-3 fixed w-full top-0 z-50 shadow-lg">
+        <a href="index.php">
+            <img src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754056451/logo_iwztru.png" alt="Chocloud Logo" class="h-12 w-auto">
+        </a>
+        
+        <ul id="mobile-menu" class="hidden md:flex md:items-center md:space-x-8 text-white text-sm font-light">
+            <li><a href="index.php" class="text-[#f4c97a] font-semibold transition-colors block py-2 md:py-0">Home</a></li>
+             <li class="relative group py-4">
+            <a href="tentang.php" class="hover:text-[#f4c97a] transition-colors inline-flex items-center gap-1.5">
+                Tentang
+                <i class="fas fa-chevron-down text-xs opacity-70"></i>
+            </a>
+            <ul class="absolute left-0 top-full w-48 bg-white text-gray-800 rounded-md shadow-lg py-1 hidden group-hover:block z-10">
+                <li><a href="tentang.php#sejarah" class="block px-4 py-2 text-sm hover:bg-gray-100">Sejarah</a></li>
+                <li><a href="tentang.php#visi-misi" class="block px-4 py-2 text-sm hover:bg-gray-100">Visi & Misi</a></li>
+            </ul>
+        </li>
+            <li><a href="informasi.php" class="hover:text-[#f4c97a] transition-colors block py-2 md:py-0">Informasi</a></li>
+            <li><a href="produk.php" class="hover:text-[#f4c97a] transition-colors block py-2 md:py-0">Produk</a></li>
+        </ul>
+
+        <div id="hamburger-btn" class="text-white text-2xl cursor-pointer md:hidden">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+<main>
+    <section class="relative bg-brand-cream min-h-[50vh] lg:min-h-[70vh] flex items-center">
+        <div class="absolute top-0 right-0 h-full w-full md:w-3/5 lg:w-2/3">
+            <img src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1753985843/Hero_image_ud47ab.jpg" alt="Woman eating chocolate truffle" class="w-full h-full object-cover">
+            <div class="absolute top-0 left-0 h-full w-[50%] bg-gradient-to-r from-[#f4c97a] via-[#f4c97a]/40 to-transparent"></div>
+        </div>
+
+        <div class="container mx-auto px-6 md:px-20 relative z-10 pt-20">
+            <div class="md:w-2/5 lg:w-1/3 text-center md:text-left">
+                <p class="font-semibold text-brand-darkbrown">CHOCLOUD BY NADI</p>
+                <h1 class="font-extrabold text-5xl lg:text-6xl leading-tight my-4 text-brand-darkbrown">
+                    TEMAN MANIS </br> DI TENGAH PADATNYA HARI
+                </h1>
+                <p class="text-base text-brand-darkbrown max-w-lg mb-8 mx-auto md:mx-0 text-justify">
+                    Chocloud merupakan produk camilan cokelat truffle premium yang menghadirkan tekstur lembut, cita rasa yang kaya, dan kemasan yang estetis.
+                </p>
+                <div class="flex items-center justify-center md:justify-start space-x-4">
+                    <a href="produk.php" class="btn-dark px-8 py-3 rounded-full font-semibold transition shadow-md hover:shadow-lg">
+                        Shop Now
+                    </a>
+                    <a href="produk.php" class="font-semibold text-darkbrown hover:text-gray-300 md:text-brand-darkbrown md:hover:text-gray-700 hover:underline">See all</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <section class="py-20 bg-brand-ivory">
+        <div class="container mx-auto px-6 md:px-20 grid md:grid-cols-2 gap-16 items-center">
+            <div class="w-full">
+                <img alt="Chocloud Box" class="rounded-xl object-cover w-full shadow-lg" src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754055346/Hampers_Christmas_sudah_bisa_dipesan_ya_Slide_next_for_pricelist._We_also_accept_bulk_orders_dgdxc6.jpg" />
+            </div>
+            <div class="text-left">
+                <p class="text-base font-light text-gray-800 max-w-xl text-justify leading-loose">
+                    Chocloud by Nadi hadir sebagai teman manis di tengah kesibukanmu. Dibuat secara handmade dari cokelat pilihan, setiap truffle punya tekstur lembut dan rasa premium yang bikin nagih. Nikmati momen santaimu, temani kerjaan, atau jadikan Chocloud sebagai hadiah kecil untuk self-reward setelah hari yang panjang. Dengan varian rasa kekinian, kami buat semuanya dengan penuh perhatian.
+                </p>
+            </div>
+        </div>
+      </section>
+
+       <?php if (!empty($best_sellers)): ?>
+      <section id="bestseller" class="py-20 bg-brand-cream">
+        <div class="container mx-auto px-6 md:px-20">
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-extrabold text-brand-darkbrown">Best Seller</h2>
+            <p class="text-gray-600 mt-2">Produk paling laris di Chocloud by Nadi</p>
+          </div>
+
+          <div class="swiper best-seller-swiper">
+            <div class="swiper-wrapper">
+                <?php foreach ($best_sellers as $product): ?>
+                <div class="swiper-slide h-auto pb-12">
+                    <div class="product-card h-full shadow-lg">
+                        <a href="detail-produk.php?id=<?php echo $product['id']; ?>">
+                            <img alt="<?php echo htmlspecialchars($product['name']); ?>" src="<?php echo htmlspecialchars($product['image']); ?>" class="w-full h-64 object-cover"/>
+                        </a>
+                        <div class="p-5 flex flex-col flex-grow">
+                            <h4 class="font-semibold text-lg text-brand-darkbrown flex-grow"><?php echo htmlspecialchars($product['name']); ?></h4>
+                            <div class="flex justify-between items-center mt-3">
+                                <p class="font-bold text-xl text-brand-darkbrown">Rp<?php echo number_format($product['price'], 0, ',', '.'); ?></p>
+                                <a href="detail-produk.php?id=<?php echo $product['id']; ?>" class="font-semibold text-sm text-gray-500 hover:text-black">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="swiper-controls">
+                <div class="swiper-pagination"></div>
+                <div class="flex gap-3">
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <?php endif; ?>
+
+       <section class="py-20 bg-brand-ivory">
+        <div class="container mx-auto px-6 md:px-20">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-extrabold text-brand-darkbrown">Ikuti Kami di Instagram</h2>
+                <a href="https://www.instagram.com/chocloud_bynadi" target="_blank" class="text-lg text-gray-600 mt-2 hover:underline">@chocloud_bynadi</a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+                <a href="https://www.instagram.com/p/DGu1VpQzStl/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="block overflow-hidden rounded-lg group relative shadow-lg">
+                    <img src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754053713/Pricelist_Ramadhan_Hampers_Semua_Paket_Hampers_bisa_mulai_di_order_dari_sekarang_ya_%EF%B8%8F_hampers_anasqw.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Instagram Post 1">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <div class="text-center text-white transform-gpu scale-90 group-hover:scale-100 transition-transform duration-300">
+                            <i class="fab fa-instagram text-4xl"></i>
+                            <p class="mt-2 font-semibold">Lihat di Instagram</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/p/DG-T_HfzQCB/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="block overflow-hidden rounded-lg group relative shadow-lg">
+                    <img src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754054009/DUBAI_CHOCLOUD_OPEN_PRE-ORDER_NOW_Ini_kan_yang_ditunggu-tunggu_yaa_Yuk_sekarang_udah_bisa_jdaado.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Instagram Post 2">
+                     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <div class="text-center text-white transform-gpu scale-90 group-hover:scale-100 transition-transform duration-300">
+                            <i class="fab fa-instagram text-4xl"></i>
+                            <p class="mt-2 font-semibold">Lihat di Instagram</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/p/DMuDI2RTL3n/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="block overflow-hidden rounded-lg group relative shadow-lg">
+                    <img src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754053713/Beli_Tiramisu_x_Chocloud_dimana_Kita_available_di_cafe_cafe_berikut_ini_ya_Yuk_yang_lagi_m_bll4dp.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Instagram Post 3">
+                     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <div class="text-center text-white transform-gpu scale-90 group-hover:scale-100 transition-transform duration-300">
+                            <i class="fab fa-instagram text-4xl"></i>
+                            <p class="mt-2 font-semibold">Lihat di Instagram</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+      </section>
+    </main>
+
+ <!-- Footer -->
+<footer class="bg-[#4a2511] text-white/90 py-16 px-6 md:px-20 text-sm">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
+
+            <div class="flex flex-col items-center md:items-start">
+                <a href="index.php" class="inline-block mb-4">
+                    <img src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754056451/logo_iwztru.png" alt="Chocloud Logo" class="h-14 w-auto">
+                </a>
+                <p class="text-white/70 text-sm max-w-xs mx-auto md:mx-0 text-justify">
+                    Camilan cokelat truffle premium yang menghadirkan kelembutan dalam setiap gigitan.
+                </p>
+            </div>
+
+          <div class="flex flex-col items-center md:items-start">
+                <h3 class="font-bold text-white text-lg mb-4">Hubungi Kami</h3>
+                <div class="space-y-3 text-white/70 font-light flex flex-col items-center md:items-start">
+                    <p>
+                        <a href="https://maps.app.goo.gl/MJ8SPXcmZPActLzRA?g_st=aw" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                            Jl. Teuku Umar No. 5, Lebakgede, Coblong, Kota Bandung, 40132
+                        </a>
+                    </p>
+                    <a href="mailto:chocloudijah@gmail.com" class="inline-flex items-center justify-center md:justify-start gap-2 hover:text-white transition-colors">
+                        <i class="fas fa-envelope fa-fw"></i>
+                        <span>chocloudijah@gmail.com</span>
+                    </a>
+                    <a href="https://wa.me/628112292013" target="_blank" class="inline-flex items-center justify-center md:justify-start gap-2 hover:text-white transition-colors">
+                        <i class="fas fa-phone-alt fa-fw"></i>
+                        <span>08112292013</span>
+                    </a>
+                    <div class="flex space-x-4 text-xl justify-center md:justify-start">
+                    <a href="https://www.facebook.com/share/16g2CgE538/" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/628112292013" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/chocloud_bynadi?igsh=bzVncmFjZHFibzN0" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+                </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-white text-lg mb-4">Socials</h3>
+                <ul class="space-y-3 text-white/70 font-light mb-6">
+                    <li><a href="https://wa.me/628112292013" target="_blank" class="hover:text-white transition-colors">Whatsapp</a></li>
+                    <li><a href="https://www.instagram.com/chocloud_bynadi?igsh=bzVncmFjZHFibzN0" target="_blank" class="hover:text-white transition-colors">Instagram</a></li>
+                    <li><a href="https://www.tiktok.com/@chocloud_bynadi?_t=ZS-8yVzkcPkh4E&_r=1" target="_blank" class="hover:text-white transition-colors">Tiktok</a></li>
+                    <li><a href="https://www.facebook.com/share/16g2CgE538/" target="_blank" class="hover:text-white transition-colors">Facebook</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="text-center text-xs mt-16 border-t border-white/20 pt-8 text-white/60">
+            <p>
+                <span>© <?php echo date("Y"); ?> Chocloud by Nadi. All rights reserved.</span>
+                <span class="mx-2 hidden sm:inline">|</span>
+                <a href="privacy-policy.php" class="hover:text-white transition-colors block sm:inline mt-2 sm:mt-0">Privacy Policy</a>
+                <span class="mx-2 hidden sm:inline">|</span>
+                <a href="terms.php" class="hover:text-white transition-colors block sm:inline mt-2 sm:mt-0">Terms & Conditions</a>
+            </p>
+        </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // --- Script untuk Menu Hamburger Mobile ---
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerIcon = hamburgerBtn.querySelector('i');
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                hamburgerIcon.classList.remove('fa-xmark');
+                hamburgerIcon.classList.add('fa-bars');
+            } else {
+                hamburgerIcon.classList.remove('fa-bars');
+                hamburgerIcon.classList.add('fa-xmark');
+            }
+        });
+        
+        // --- Script untuk Inisialisasi Slider Best Seller ---
+        const bestSellerSwiper = new Swiper('.best-seller-swiper', {
+            loop: true,
+            slidesPerView: 1, // Default untuk mobile
+            slidesPerGroup: 1, // Geser 1 per 1 di mobile
+            spaceBetween: 24,
+            pagination: {
+                el: '.best-seller-swiper .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.best-seller-swiper .swiper-button-next',
+                prevEl: '.best-seller-swiper .swiper-button-prev',
+            },
+            breakpoints: {
+                640: { // Untuk tablet kecil
+                    slidesPerView: 2,
+                    slidesPerGroup: 2, // Geser 2 per 2
+                    spaceBetween: 24
+                },
+                1024: { // Untuk desktop
+                    slidesPerView: 3,
+                    slidesPerGroup: 3, // Geser 3 per 3
+                    spaceBetween: 32
+                }
+            }
+        });
+    });
+    </script>
+    </div>
+</footer>
+
+</body>
+</html>

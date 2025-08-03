@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kebijakan Privasi - Chocloud</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        body { font-family: "Poppins", sans-serif; color: #3D2314; }
+        .prose h2 { font-size: 1.25rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; }
+        .prose p, .prose li { color: #4A5568; }
+        .prose ul { list-style-type: disc; padding-left: 1.5rem; }
+    </style>
+</head>
+<body class="bg-gray-50">
+     <nav class="bg-[#4a2511] flex justify-between items-center px-6 md:px-20 py-3 fixed w-full top-0 z-50 shadow-lg">
+        <a href="index.php">
+            <img src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754056451/logo_iwztru.png" alt="Chocloud Logo" class="h-12 w-auto">
+        </a>
+        <ul class="hidden md:flex space-x-8 text-white text-sm font-light items-center">
+            <li><a href="index.php" class="hover:text-[#f4c97a] transition-colors">Home</a></li>
+            <li class="relative group py-4">
+            <a href="tentang.php" class="hover:text-[#f4c97a] transition-colors inline-flex items-center gap-1.5">
+                Tentang
+                <i class="fas fa-chevron-down text-xs opacity-70"></i>
+            </a>
+            <ul class="absolute left-0 top-full w-48 bg-white text-gray-800 rounded-md shadow-lg py-1 hidden group-hover:block z-10">
+                <li><a href="tentang.php#sejarah" class="block px-4 py-2 text-sm hover:bg-gray-100">Sejarah</a></li>
+                <li><a href="tentang.php#visi-misi" class="block px-4 py-2 text-sm hover:bg-gray-100">Visi & Misi</a></li>
+            </ul>
+        </li>
+            <li><a href="informasi.php" class="hover:text-[#f4c97a] transition-colors">Informasi</a></li>
+            <li><a href="produk.php" class="hover:text-[#f4c97a] transition-colors">Produk</a></li>
+        </ul>
+        <div class="text-white text-2xl cursor-pointer md:hidden"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <nav class="bg-[#4a2511] flex justify-between items-center px-6 md:px-20 py-3 fixed w-full top-0 z-50 shadow-lg">
+        <a href="index.php">
+            <img src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754056451/logo_iwztru.png" alt="Chocloud Logo" class="h-12 w-auto">
+        </a>
+        
+        <ul id="mobile-menu" class="hidden md:flex md:items-center md:space-x-8 text-white text-sm font-light">
+            <li><a href="index.php" class="hover:text-[#f4c97a] transition-colors block py-2 md:py-0">Home</a></li>
+            <li class="relative group py-4">
+            <a href="tentang.php" class="hover:text-[#f4c97a] transition-colors inline-flex items-center gap-1.5">
+                Tentang
+                <i class="fas fa-chevron-down text-xs opacity-70"></i>
+            </a>
+            <ul class="absolute left-0 top-full w-48 bg-white text-gray-800 rounded-md shadow-lg py-1 hidden group-hover:block z-10">
+                <li><a href="tentang.php#sejarah" class="block px-4 py-2 text-sm hover:bg-gray-100">Sejarah</a></li>
+                <li><a href="tentang.php#visi-misi" class="block px-4 py-2 text-sm hover:bg-gray-100">Visi & Misi</a></li>
+            </ul>
+        </li>
+            <li><a href="informasi.php" class="hover:text-[#f4c97a] transition-colors block py-2 md:py-0">Informasi</a></li>
+            <li><a href="produk.php" class="hover:text-[#f4c97a] transition-colors block py-2 md:py-0">Produk</a></li>
+        </ul>
+
+        <div id="hamburger-btn" class="text-white text-2xl cursor-pointer md:hidden">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-16">
+      <div class="container mx-auto px-6 md:px-20 max-w-4xl bg-white p-8 md:p-12 rounded-lg shadow-md">
+        <h1 class="text-4xl font-extrabold text-center mb-2">Kebijakan Privasi</h1>
+        <p class="text-center text-gray-500 mb-8">Terakhir diperbarui: 1 Agustus 2025</p>
+
+        <div class="prose max-w-none">
+            <p>Terima kasih telah mengunjungi Chocloud by Nadi. Privasi Anda sangat penting bagi kami. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, dan melindungi informasi pribadi yang Anda berikan saat menggunakan situs web kami.</p>
+
+            <h2>Informasi yang Kami Kumpulkan</h2>
+            <p>Kami dapat mengumpulkan informasi pribadi dari Anda dalam berbagai cara, termasuk:</p>
+            <ul>
+                <li><strong>Data Pribadi:</strong> Nama, alamat email, nomor telepon, dan alamat pengiriman yang Anda berikan saat mengisi formulir testimoni atau saat melakukan pemesanan melalui WhatsApp/Shopee.</li>
+                <li><strong>Data Penggunaan:</strong> Informasi tentang bagaimana Anda mengakses dan menggunakan situs web kami, yang dikumpulkan secara otomatis.</li>
+            </ul>
+
+            <h2>Bagaimana Kami Menggunakan Informasi Anda</h2>
+            <p>Informasi yang kami kumpulkan digunakan untuk tujuan berikut:</p>
+            <ul>
+                <li>Untuk menyediakan dan memelihara layanan kami.</li>
+                <li>Untuk memproses pesanan Anda dan mengelola pengiriman.</li>
+                <li>Untuk berkomunikasi dengan Anda, termasuk menanggapi pertanyaan dan permintaan Anda.</li>
+                <li>Untuk menampilkan testimoni Anda di situs kami (dengan persetujuan Anda).</li>
+                <li>Untuk meningkatkan pengalaman pengguna di website kami.</li>
+            </ul>
+
+            <h2>Pembagian Informasi Anda</h2>
+            <p>Kami tidak menjual atau menyewakan data pribadi Anda kepada pihak ketiga. Kami hanya dapat membagikan informasi Anda kepada pihak ketiga yang tepercaya untuk membantu kami menjalankan bisnis, seperti:</p>
+            <ul>
+                <li><strong>Penyedia Jasa Kurir:</strong> Untuk mengirimkan produk pesanan Anda.</li>
+                <li><strong>Penyedia Layanan Pembayaran:</strong> Jika Anda melakukan pembayaran melalui platform pihak ketiga.</li>
+            </ul>
+
+            <h2>Keamanan Data</h2>
+            <p>Kami berkomitmen untuk melindungi keamanan data Anda. Kami menggunakan langkah-langkah keamanan yang wajar untuk melindungi informasi Anda dari akses, penggunaan, atau pengungkapan yang tidak sah.</p>
+            
+            <h2>Kontak Kami</h2>
+            <p>Jika Anda memiliki pertanyaan tentang Kebijakan Privasi ini, silakan hubungi kami di <a href="mailto:chocloudijah@gmail.com" class="text-blue-600 hover:underline">chocloudijah@gmail.com</a>.</p>
+        </div>
+      </div>
+    </main>
+    
+ <!-- Footer -->
+<footer class="bg-[#4a2511] text-white/90 py-16 px-6 md:px-20 text-sm">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
+
+            <div class="flex flex-col items-center md:items-start">
+                <a href="index.php" class="inline-block mb-4">
+                    <img src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754056451/logo_iwztru.png" alt="Chocloud Logo" class="h-14 w-auto">
+                </a>
+                <p class="text-white/70 text-sm max-w-xs mx-auto md:mx-0 text-justify">
+                    Camilan cokelat truffle premium yang menghadirkan kelembutan dalam setiap gigitan.
+                </p>
+            </div>
+
+          <div class="flex flex-col items-center md:items-start">
+                <h3 class="font-bold text-white text-lg mb-4">Hubungi Kami</h3>
+                <div class="space-y-3 text-white/70 font-light flex flex-col items-center md:items-start">
+                    <p>
+                        <a href="https://maps.app.goo.gl/MJ8SPXcmZPActLzRA?g_st=aw" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                            Jl. Teuku Umar No. 5, Lebakgede, Coblong, Kota Bandung, 40132
+                        </a>
+                    </p>
+                    <a href="mailto:chocloudijah@gmail.com" class="inline-flex items-center justify-center md:justify-start gap-2 hover:text-white transition-colors">
+                        <i class="fas fa-envelope fa-fw"></i>
+                        <span>chocloudijah@gmail.com</span>
+                    </a>
+                    <a href="https://wa.me/628112292013" target="_blank" class="inline-flex items-center justify-center md:justify-start gap-2 hover:text-white transition-colors">
+                        <i class="fas fa-phone-alt fa-fw"></i>
+                        <span>08112292013</span>
+                    </a>
+                    <div class="flex space-x-4 text-xl justify-center md:justify-start">
+                    <a href="https://www.facebook.com/share/16g2CgE538/" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/628112292013" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/chocloud_bynadi?igsh=bzVncmFjZHFibzN0" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+                </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-white text-lg mb-4">Socials</h3>
+                <ul class="space-y-3 text-white/70 font-light mb-6">
+                    <li><a href="https://wa.me/628112292013" target="_blank" class="hover:text-white transition-colors">Whatsapp</a></li>
+                    <li><a href="https://www.instagram.com/chocloud_bynadi?igsh=bzVncmFjZHFibzN0" target="_blank" class="hover:text-white transition-colors">Instagram</a></li>
+                    <li><a href="https://www.tiktok.com/@chocloud_bynadi?_t=ZS-8yVzkcPkh4E&_r=1" target="_blank" class="hover:text-white transition-colors">Tiktok</a></li>
+                    <li><a href="https://www.facebook.com/share/16g2CgE538/" target="_blank" class="hover:text-white transition-colors">Facebook</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="text-center text-xs mt-16 border-t border-white/20 pt-8 text-white/60">
+            <p>
+                <span>© <?php echo date("Y"); ?> Chocloud by Nadi. All rights reserved.</span>
+                <span class="mx-2 hidden sm:inline">|</span>
+                <a href="privacy-policy.php" class="hover:text-white transition-colors block sm:inline mt-2 sm:mt-0">Privacy Policy</a>
+                <span class="mx-2 hidden sm:inline">|</span>
+                <a href="terms.php" class="hover:text-white transition-colors block sm:inline mt-2 sm:mt-0">Terms & Conditions</a>
+            </p>
+        </div>
+
+    </div>
+</footer>
+</body>
+</html>

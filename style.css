@@ -1,0 +1,16 @@
+html {
+  /* Membuat scroll ke section terasa mulus */
+  scroll-behavior: smooth;
+  /* Memberi jarak dari atas agar konten tidak tertutup navbar */
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/* PERUBAHAN 1: Style untuk link navbar yang aktif */
+.nav-link.active {
+  color: #f4c97a;
+  font-weight: 600; /* semi-bold */
+}

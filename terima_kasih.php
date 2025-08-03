@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terima Kasih - Chocloud</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-[#3E1E00]">
+    <nav
+      class="bg-[#4a2511] flex justify-between items-center px-6 md:px-20 py-3 shadow-lg"
+    >
+      <a href="index.php" class="flex items-center space-x-1">
+        <span class="text-white font-light text-xl">chocl</span
+        ><span class="text-[#f26a4d] font-light text-xl">oud</span>
+      </a>
+      <ul class="hidden md:flex space-x-8 text-white text-sm font-light">
+        <li><a href="index.php" class="hover:text-[#f4c97a]">Home</a></li>
+        <li><a href="produk.php" class="hover:text-[#f4c97a]">Produk</a></li>
+        <li>
+          <a href="informasi.php" class="hover:text-[#f4c97a]">Informasi</a>
+        </li>
+      </ul>
+    </nav>
+
+    <main class="flex items-center justify-center min-h-screen pt-16">
+      <div
+        class="text-center p-10 bg-white rounded-lg shadow-xl max-w-lg mx-auto -mt-20"
+      >
+        <svg
+          class="w-16 h-16 mx-auto text-green-500 mb-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <h1 class="text-3xl font-bold text-[#4a2511] mb-2">Terima Kasih!</h1>
+        <p class="text-gray-600 mb-6">
+          Ulasan Anda telah berhasil kami terima. Kami akan meninjaunya terlebih
+          dahulu sebelum ditampilkan di halaman testimoni.
+        </p>
+        <a
+          href="informasi.php"
+          class="bg-[#4a2511] text-white px-6 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition"
+        >
+          Kembali ke Halaman Informasi
+        </a>
+      </div>
+    </main>
+  </body>
+</html>
