@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chocloud - Matcha – 18 Cubes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        color: #4a2511;
+      }
+      .product-card {
+        background-color: white;
+        border-radius: 0.75rem;
+        border: 1px solid #f0e9e1;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+      }
+      .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 25px rgba(74, 37, 17, 0.08);
+      }
+      .buy-button {
+        transition: all 0.3s ease;
+      }
+      .bg-brand-ivory {
+        background-color: #f8f5f1;
+      }
+      .text-brand-darkbrown {
+        color: #3d2314;
+      }
+      .btn-dark {
+        background-color: #3d2314;
+        color: white;
+      }
+      .btn-dark:hover {
+        background-color: #2a150b;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <nav
+      class="bg-[#4a2511] flex justify-between items-center px-6 md:px-20 py-3 fixed w-full top-0 z-50 shadow-lg"
+    >
+      <a href="index.html">
+        <img
+          src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754056451/logo_iwztru.png"
+          alt="Chocloud Logo"
+          class="h-12 w-auto"
+        />
+      </a>
+      <ul
+        id="mobile-menu"
+        class="hidden md:flex md:items-center md:space-x-8 text-white text-sm font-light"
+      >
+        <li>
+          <a
+            href="index.html"
+            class="hover:text-[#f4c97a] transition-colors block py-2 md:py-0"
+            >Home</a
+          >
+        </li>
+        <li class="relative group py-4">
+          <a
+            href="tentang.html"
+            class="hover:text-[#f4c97a] transition-colors inline-flex items-center gap-1.5"
+          >
+            Tentang <i class="fas fa-chevron-down text-xs opacity-70"></i>
+          </a>
+          <ul
+            class="absolute left-0 top-full w-48 bg-white text-gray-800 rounded-md shadow-lg py-1 hidden group-hover:block z-10"
+          >
+            <li>
+              <a
+                href="tentang.html#sejarah"
+                class="block px-4 py-2 text-sm hover:bg-gray-100"
+                >Sejarah</a
+              >
+            </li>
+            <li>
+              <a
+                href="tentang.html#visi-misi"
+                class="block px-4 py-2 text-sm hover:bg-gray-100"
+                >Visi & Misi</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a
+            href="informasi.html"
+            class="hover:text-[#f4c97a] transition-colors block py-2 md:py-0"
+            >Informasi</a
+          >
+        </li>
+        <li>
+          <a
+            href="produk.html"
+            class="text-[#f4c97a] font-semibold transition-colors block py-2 md:py-0"
+            >Produk</a
+          >
+        </li>
+      </ul>
+      <div
+        id="hamburger-btn"
+        class="text-white text-2xl cursor-pointer md:hidden"
+      >
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+
+    <main>
+      <section class="bg-[#f4c97a] pt-28 pb-16">
+        <div
+          class="container mx-auto px-6 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+        >
+          <div class="w-full md:order-2">
+            <img
+              alt="Matcha – 18 Cubes"
+              class="rounded-2xl object-cover w-full h-auto aspect-square shadow-2xl"
+              src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754052737/rqmralxkq1s4nq3fhk9w.jpg"
+            />
+          </div>
+
+          <div class="w-full md:order-1">
+            <a
+              href="produk.html"
+              class="inline-flex items-center gap-2 text-sm text-gray-700 font-medium mb-4 hover:text-[#4a2511] transition"
+            >
+              <i class="fas fa-arrow-left"></i>
+              Kembali ke Produk
+            </a>
+
+            <div>
+              <h1
+                class="text-4xl lg:text-5xl font-extrabold text-brand-darkbrown"
+              >
+                Matcha – 18 Cubes
+              </h1>
+              <p class="text-3xl font-bold text-brand-darkbrown mt-3 mb-6">
+                Rp42.000
+              </p>
+
+              <div
+                class="prose max-w-none text-gray-700 text-justify leading-relaxed"
+              >
+                <p>
+                  Buat kamu para pencinta matcha, ini dia truffle yang bakal
+                  bikin jatuh hati sejak gigitan pertama! Varian Matcha dari
+                  Chocloud punya perpaduan rasa cokelat yang lembut dan matcha
+                  yang earthy & calming banget. Gak terlalu pahit, gak terlalu
+                  manis — pas banget di lidah.
+                </p>
+              </div>
+
+              <div class="mt-8 border-t pt-6">
+                <h3 class="text-xl font-semibold text-brand-darkbrown mb-4">
+                  Detail Produk
+                </h3>
+                <ul class="space-y-3 text-brand-drakbrown-600">
+                  <li class="flex items-start gap-3">
+                    <i
+                      class="fas fa-box-open text-brand-darkbrown mt-1 fa-fw"
+                    ></i>
+                    <span><strong>Isi:</strong> 18 cubes dalam satu box</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i
+                      class="fas fa-cookie-bite text-brand-darkbrown mt-1 fa-fw"
+                    ></i>
+                    <span
+                      ><strong>Rasa:</strong> Perpaduan matcha halus dan cokelat
+                      lembut</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i
+                      class="fas fa-mug-hot text-brand-darkbrown mt-1 fa-fw"
+                    ></i>
+                    <span
+                      ><strong>Cocok buat:</strong> Pencinta teh hijau, momen
+                      santai, atau buat yang pengen explore rasa baru.</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div class="mt-10 flex flex-col sm:flex-row gap-4">
+                <a
+                  href="https://shopee.co.id/universal-link/now-food/dish/22097828/2637460934293504?deep_and_deferred=1&shareChannel=copy_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-dark w-full sm:w-auto text-center px-8 py-3 rounded-full font-semibold transition shadow-mdhover:bg-opacity-90 transition-transform hover:scale-105 shadow-md inline-flex items-center justify-center gap-2"
+                >
+                  <i class="fas fa-store"></i>
+                  Beli di Shopee
+                </a>
+                <a
+                  href="https://wa.me/628112292013?text=Halo%20Chocloud%2C%20saya%20mau%20pesan%20produk%20di%20bawah%20ini%3A%0A%0AProduk%3A%20Matcha%20%E2%80%93%2018%20Cubes%0AHarga%20(Paket)%3A%20Rp42.000%0A%0AMohon%20diisi%20data%20berikut%3A%0ANama%20Penerima%3A%20%0AAlamat%20Lengkap%3A%20%0ANo.%20HP%3A%20%0AJumlah%20Pesanan%3A%20%0A%0ATerima%20kasih."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-dark w-full sm:w-auto text-center px-8 py-3 rounded-full font-semibold transition shadow-mdhover:bg-opacity-90 transition-transform hover:scale-105 shadow-md inline-flex items-center justify-center gap-2"
+                >
+                  <i class="fab fa-whatsapp"></i>
+                  Pesan via WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white py-20">
+        <div class="container mx-auto px-6 md:px-20">
+          <h2 class="text-3xl font-bold text-center mb-10">
+            Anda Mungkin Juga Suka
+          </h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="product-card flex flex-col">
+              <a href="detail-kurma.html">
+                <img
+                  alt="Kurma – 6 Cubes"
+                  src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1753985865/Kurma_phnbdv.jpg"
+                  class="w-full h-48 object-cover"
+                />
+              </a>
+              <div class="p-4 flex flex-col flex-grow">
+                <h4 class="font-semibold text-base truncate flex-grow">
+                  Kurma – 6 Cubes
+                </h4>
+                <div class="flex justify-between items-center mt-3">
+                  <p class="font-bold text-lg">Rp80.000</p>
+                  <a
+                    href="detail-kurma.html"
+                    class="buy-button text-xs px-4 py-2 rounded-full border border-gray-300 hover:bg-[#4a2511] hover:text-white transition"
+                    >Lihat Detail</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card flex flex-col">
+              <a href="detail-mixmatch.html">
+                <img
+                  alt="Mix Match – 18 Cubes"
+                  src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1753985872/mixmatch_x6jaxe.jpg"
+                  class="w-full h-48 object-cover"
+                />
+              </a>
+              <div class="p-4 flex flex-col flex-grow">
+                <h4 class="font-semibold text-base truncate flex-grow">
+                  Mix Match – 18 Cubes
+                </h4>
+                <div class="flex justify-between items-center mt-3">
+                  <p class="font-bold text-lg">Rp112.000</p>
+                  <a
+                    href="detail-mixmatch.html"
+                    class="buy-button text-xs px-4 py-2 rounded-full border border-gray-300 hover:bg-[#4a2511] hover:text-white transition"
+                    >Lihat Detail</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card flex flex-col">
+              <a href="detail-classic.html">
+                <img
+                  alt="Classic – 18 Cubes"
+                  src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1753985873/classic_xe79jq.jpg"
+                  class="w-full h-48 object-cover"
+                />
+              </a>
+              <div class="p-4 flex flex-col flex-grow">
+                <h4 class="font-semibold text-base truncate flex-grow">
+                  Classic – 18 Cubes
+                </h4>
+                <div class="flex justify-between items-center mt-3">
+                  <p class="font-bold text-lg">Rp85.000</p>
+                  <a
+                    href="detail-classic.html"
+                    class="buy-button text-xs px-4 py-2 rounded-full border border-gray-300 hover:bg-[#4a2511] hover:text-white transition"
+                    >Lihat Detail</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card flex flex-col">
+              <a href="detail-valentine-set.html">
+                <img
+                  alt="Valentine Set – 6 Cubes"
+                  src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1753985864/Valentine_Set_dqq7ak.jpg"
+                  class="w-full h-48 object-cover"
+                />
+              </a>
+              <div class="p-4 flex flex-col flex-grow">
+                <h4 class="font-semibold text-base truncate flex-grow">
+                  Valentine Set – 6 Cubes
+                </h4>
+                <div class="flex justify-between items-center mt-3">
+                  <p class="font-bold text-lg">Rp80.000</p>
+                  <a
+                    href="detail-valentine-set.html"
+                    class="buy-button text-xs px-4 py-2 rounded-full border border-gray-300 hover:bg-[#4a2511] hover:text-white transition"
+                    >Lihat Detail</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-[#4a2511] text-white/90 py-16 px-6 md:px-20 text-sm">
+      <div class="container mx-auto">
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left"
+        >
+          <div class="flex flex-col items-center md:items-start">
+            <a href="index.html" class="inline-block mb-4">
+              <img
+                src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754056451/logo_iwztru.png"
+                alt="Chocloud Logo"
+                class="h-14 w-auto"
+              />
+            </a>
+            <p
+              class="text-white/70 text-sm max-w-xs mx-auto md:mx-0 text-justify"
+            >
+              Camilan cokelat truffle premium yang menghadirkan kelembutan dalam
+              setiap gigitan.
+            </p>
+          </div>
+
+          <div class="flex flex-col items-center md:items-start">
+            <h3 class="font-bold text-white text-lg mb-4">Hubungi Kami</h3>
+            <div
+              class="space-y-3 text-white/70 font-light flex flex-col items-center md:items-start"
+            >
+              <p>
+                <a
+                  href="https://maps.app.goo.gl/MJ8SPXcmZPActLzRA?g_st=aw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-white transition-colors"
+                >
+                  Jl. Teuku Umar No. 5, Lebakgede, Coblong, Kota Bandung, 40132
+                </a>
+              </p>
+              <a
+                href="mailto:chocloudijah@gmail.com"
+                class="inline-flex items-center justify-center md:justify-start gap-2 hover:text-white transition-colors"
+              >
+                <i class="fas fa-envelope fa-fw"></i>
+                <span>chocloudijah@gmail.com</span>
+              </a>
+              <a
+                href="https://wa.me/628112292013"
+                target="_blank"
+                class="inline-flex items-center justify-center md:justify-start gap-2 hover:text-white transition-colors"
+              >
+                <i class="fas fa-phone-alt fa-fw"></i>
+                <span>08112292013</span>
+              </a>
+              <div
+                class="flex space-x-4 text-xl justify-center md:justify-start"
+              >
+                <a
+                  href="https://www.facebook.com/share/16g2CgE538/"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a
+                  href="https://wa.me/628112292013"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  ><i class="fab fa-whatsapp"></i
+                ></a>
+                <a
+                  href="https://www.instagram.com/chocloud_bynadi?igsh=bzVncmFjZHFibzN0"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-white text-lg mb-4">Socials</h3>
+            <ul class="space-y-3 text-white/70 font-light mb-6">
+              <li>
+                <a
+                  href="https://wa.me/628112292013"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  >Whatsapp</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/chocloud_bynadi?igsh=bzVncmFjZHFibzN0"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  >Instagram</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.tiktok.com/@chocloud_bynadi?_t=ZS-8yVzkcPkh4E&_r=1"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  >Tiktok</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/share/16g2CgE538/"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  >Facebook</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="text-center text-xs mt-16 border-t border-white/20 pt-8 text-white/60"
+        >
+          <p>
+            <span>© 2025 Chocloud by Nadi. All rights reserved.</span>
+            <span class="mx-2 hidden sm:inline">|</span>
+            <a
+              href="privacy-policy.html"
+              class="hover:text-white transition-colors block sm:inline mt-2 sm:mt-0"
+              >Privacy Policy</a
+            >
+            <span class="mx-2 hidden sm:inline">|</span>
+            <a
+              href="terms.html"
+              class="hover:text-white transition-colors block sm:inline mt-2 sm:mt-0"
+              >Terms & Conditions</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // --- Script untuk Menu Hamburger Mobile ---
+        const hamburgerBtn = document.getElementById("hamburger-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const hamburgerIcon = hamburgerBtn.querySelector("i");
+
+        hamburgerBtn.addEventListener("click", () => {
+          // Toggle menu visibility
+          if (mobileMenu.classList.contains("hidden")) {
+            mobileMenu.classList.remove("hidden");
+            mobileMenu.classList.add(
+              "flex",
+              "flex-col",
+              "absolute",
+              "top-full",
+              "left-0",
+              "w-full",
+              "bg-[#4a2511]",
+              "px-6",
+              "pb-4",
+              "pt-2"
+            ); // Add styles for mobile view
+            hamburgerIcon.classList.remove("fa-bars");
+            hamburgerIcon.classList.add("fa-xmark");
+          } else {
+            mobileMenu.classList.add("hidden");
+            mobileMenu.classList.remove(
+              "flex",
+              "flex-col",
+              "absolute",
+              "top-full",
+              "left-0",
+              "w-full",
+              "bg-[#4a2511]",
+              "px-6",
+              "pb-4",
+              "pt-2"
+            );
+            hamburgerIcon.classList.remove("fa-xmark");
+            hamburgerIcon.classList.add("fa-bars");
+          }
+        });
+
+        // --- Script untuk Inisialisasi Slider Best Seller ---
+        const bestSellerSwiper = new Swiper(".best-seller-swiper", {
+          loop: true,
+          slidesPerView: 1, // Default untuk mobile
+          slidesPerGroup: 1, // Geser 1 per 1 di mobile
+          spaceBetween: 24,
+          pagination: {
+            el: ".best-seller-swiper .swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".best-seller-swiper .swiper-button-next",
+            prevEl: ".best-seller-swiper .swiper-button-prev",
+          },
+          breakpoints: {
+            640: {
+              // Untuk tablet kecil
+              slidesPerView: 2,
+              slidesPerGroup: 2, // Geser 2 per 2
+              spaceBetween: 24,
+            },
+            1024: {
+              // Untuk desktop
+              slidesPerView: 3,
+              slidesPerGroup: 3, // Geser 3 per 3
+              spaceBetween: 32,
+            },
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

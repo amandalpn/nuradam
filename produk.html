@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chocloud - Varian Produk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #fdf8f2;
+        color: #4a2511;
+      }
+      #filterTabs li.active {
+        color: #4a2511;
+        border-bottom: 2px solid #4a2511;
+      }
+      .product-card {
+        background-color: white;
+        border-radius: 0.75rem;
+        border: 1px solid #f0e9e1;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+      }
+      .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.08);
+      }
+      .product-card img {
+        width: 100%;
+        height: 14rem;
+        object-fit: cover;
+      }
+      .buy-button {
+        background-color: transparent;
+        color: #4a2511;
+        border: 1px solid #c9b49b;
+        transition: all 0.3s ease;
+        font-weight: 500;
+      }
+      .buy-button:hover {
+        background-color: #4a2511;
+        color: white;
+        border-color: #4a2511;
+      }
+      .bg-brand-cream {
+        background-color: #f4c97a;
+      }
+      .swiper-pagination-bullet-active {
+        background-color: #4a2511 !important;
+      }
+      .swiper-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 2rem;
+      }
+      .swiper-nav-buttons {
+        display: flex;
+        gap: 0.75rem;
+      }
+      .swiper-button-next,
+      .swiper-button-prev {
+        position: static;
+        width: 44px;
+        height: 44px;
+        margin: 0;
+        background-color: white;
+        border-radius: 9999px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        color: #4a2511;
+        transition: all 0.2s;
+      }
+      .swiper-button-next:hover,
+      .swiper-button-prev:hover {
+        background-color: #4a2511;
+        color: white;
+      }
+      .swiper-button-next:after,
+      .swiper-button-prev:after {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .swiper-pagination {
+        position: static;
+        width: auto;
+      }
+      .swiper-slide {
+        height: auto;
+        display: flex;
+      }
+    </style>
+  </head>
+  <body class="bg-[#fdf6ee]">
+    <nav
+      class="bg-[#4a2511] flex justify-between items-center px-6 md:px-20 py-3 fixed w-full top-0 z-50 shadow-lg"
+    >
+      <a href="index.html">
+        <img
+          src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754056451/logo_iwztru.png"
+          alt="Chocloud Logo"
+          class="h-12 w-auto"
+        />
+      </a>
+      <ul
+        id="mobile-menu"
+        class="hidden md:flex md:items-center md:space-x-8 text-white text-sm font-light"
+      >
+        <li>
+          <a
+            href="index.html"
+            class="hover:text-[#f4c97a] transition-colors block py-2 md:py-0"
+            >Home</a
+          >
+        </li>
+        <li class="relative group py-4">
+          <a
+            href="tentang.html"
+            class="hover:text-[#f4c97a] transition-colors inline-flex items-center gap-1.5"
+          >
+            Tentang <i class="fas fa-chevron-down text-xs opacity-70"></i>
+          </a>
+          <ul
+            class="absolute left-0 top-full w-48 bg-white text-gray-800 rounded-md shadow-lg py-1 hidden group-hover:block z-10"
+          >
+            <li>
+              <a
+                href="tentang.html#sejarah"
+                class="block px-4 py-2 text-sm hover:bg-gray-100"
+                >Sejarah</a
+              >
+            </li>
+            <li>
+              <a
+                href="tentang.html#visi-misi"
+                class="block px-4 py-2 text-sm hover:bg-gray-100"
+                >Visi & Misi</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a
+            href="informasi.html"
+            class="hover:text-[#f4c97a] transition-colors block py-2 md:py-0"
+            >Informasi</a
+          >
+        </li>
+        <li>
+          <a
+            href="produk.html"
+            class="text-[#f4c97a] font-semibold transition-colors block py-2 md:py-0"
+            >Produk</a
+          >
+        </li>
+      </ul>
+      <div
+        id="hamburger-btn"
+        class="text-white text-2xl cursor-pointer md:hidden"
+      >
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+
+    <main>
+      <section class="relative bg-brand-cream min-h-[50vh] flex items-center">
+        <div class="absolute top-0 right-0 h-full w-full md:w-3/5 lg:w-2/3">
+          <img
+            src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1753985870/Hero_image_quw34m.jpg"
+            alt="chocolate truffle"
+            class="w-full h-full object-cover"
+          />
+          <div
+            class="absolute top-0 left-0 h-full w-[50%] bg-gradient-to-r from-[#f4c97a] via-[#f4c97a]/40 to-transparent"
+          ></div>
+        </div>
+        <div class="container mx-auto px-6 md:px-20 relative z-10 pt-20">
+          <div class="md:w-2/5 lg:w-1/3 text-center md:text-left">
+            <h1
+              class="font-extrabold text-5xl lg:text-6xl leading-tight my-4 text-[#3D2314]"
+            >
+              DAFTAR<br />VARIAN
+            </h1>
+            <p
+              class="text-base text-[#3D2314] max-w-lg mb-8 mx-auto md:mx-0 text-justify"
+            >
+              Temukan kelezatan cokelat truffle premium kami. Dibuat dengan
+              cinta dan bahan-bahan terbaik untuk setiap momen berharga Anda.
+              Choclab merupakan chocolate brand yang pertama di kota Solo dengan
+              produk homemade dan authentic premium. Setiap varian yang kami
+              produksi dan jual selalu mengutamakan kualitas dan rasa yang
+              sangat nikmat. Produk yang kami punya dibuat secara handmade
+              dengan tanpa bahan pengawet atau bahan tambahan lainnya.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="produk" class="pt-20">
+        <div class="container mx-auto px-6 md:px-20">
+          <h2 class="text-3xl lg:text-4xl font-bold text-center mb-3">
+            Produk Pilihan Kami
+          </h2>
+          <p class="text-center text-sm text-gray-500 max-w-xl mx-auto mb-12">
+            "Setiap varian dibuat secara handmade dengan bahan berkualitas
+            terbaik untuk menjaga keaslian rasa."
+          </p>
+
+          <ul
+            id="filterTabs"
+            class="flex justify-center space-x-8 md:space-x-12 text-gray-500 font-medium border-b mb-12 text-md cursor-pointer"
+          >
+            <li data-filter="all" class="active pb-3">Semua</li>
+            <li data-filter="popular" class="pb-3">Popular</li>
+            <li data-filter="truffle" class="pb-3">Truffle</li>
+            <li data-filter="tiramisu" class="pb-3">Tiramisu</li>
+            <li data-filter="special" class="pb-3">Special</li>
+          </ul>
+
+          <div class="swiper product-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide h-auto pb-12" data-category="truffle">
+                <div class="product-card h-full w-full shadow-lg">
+                  <a href="detail-almond.html"
+                    ><img
+                      alt="Almond - 18 Cubes"
+                      src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754052828/di9iumblfhjhus7f9upt.jpg"
+                      class="w-full h-56 object-cover"
+                  /></a>
+                  <div class="p-5 flex flex-col flex-grow">
+                    <h4 class="font-semibold text-lg flex-grow">
+                      Almond - 18 Cubes
+                    </h4>
+                    <div class="flex justify-between items-center mt-3">
+                      <p class="font-bold text-xl">Rp112.000</p>
+                      <a
+                        href="detail-almond.html"
+                        class="buy-button text-xs px-4 py-2 rounded-full"
+                        >Lihat Detail</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide h-auto pb-12" data-category="popular">
+                <div class="product-card h-full w-full shadow-lg">
+                  <a href="detail-valentine-set.html"
+                    ><img
+                      alt="Valentine Set – 6 Cubes"
+                      src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1753985864/Valentine_Set_dqq7ak.jpg"
+                      class="w-full h-56 object-cover"
+                  /></a>
+                  <div class="p-5 flex flex-col flex-grow">
+                    <h4 class="font-semibold text-lg flex-grow">
+                      Valentine Set – 6 Cubes
+                    </h4>
+                    <div class="flex justify-between items-center mt-3">
+                      <p class="font-bold text-xl">Rp80.000</p>
+                      <a
+                        href="detail-valentine-set.html"
+                        class="buy-button text-xs px-4 py-2 rounded-full"
+                        >Lihat Detail</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide h-auto pb-12" data-category="popular">
+                <div class="product-card h-full w-full shadow-lg">
+                  <a href="detail-kurma.html"
+                    ><img
+                      alt="Kurma – 6 Cubes"
+                      src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1753985865/Kurma_phnbdv.jpg"
+                      class="w-full h-56 object-cover"
+                  /></a>
+                  <div class="p-5 flex flex-col flex-grow">
+                    <h4 class="font-semibold text-lg flex-grow">
+                      Kurma – 6 Cubes
+                    </h4>
+                    <div class="flex justify-between items-center mt-3">
+                      <p class="font-bold text-xl">Rp80.000</p>
+                      <a
+                        href="detail-kurma.html"
+                        class="buy-button text-xs px-4 py-2 rounded-full"
+                        >Lihat Detail</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide h-auto pb-12" data-category="special">
+                <div class="product-card h-full w-full shadow-lg">
+                  <a href="detail-mini-pack.html"
+                    ><img
+                      alt="Mini Pack – 9 Cubes"
+                      src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754054369/ssuzzwdzpftk231kfrew.jpg"
+                      class="w-full h-56 object-cover"
+                  /></a>
+                  <div class="p-5 flex flex-col flex-grow">
+                    <h4 class="font-semibold text-lg flex-grow">
+                      Mini Pack – 9 Cubes
+                    </h4>
+                    <div class="flex justify-between items-center mt-3">
+                      <p class="font-bold text-xl">Rp65.000</p>
+                      <a
+                        href="detail-mini-pack.html"
+                        class="buy-button text-xs px-4 py-2 rounded-full"
+                        >Lihat Detail</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide h-auto pb-12" data-category="special">
+                <div class="product-card h-full w-full shadow-lg">
+                  <a href="detail-gift-box.html"
+                    ><img
+                      alt="Gift Box – Mixed"
+                      src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754054309/nowznoop2hbhztlbcvjh.jpg"
+                      class="w-full h-56 object-cover"
+                  /></a>
+                  <div class="p-5 flex flex-col flex-grow">
+                    <h4 class="font-semibold text-lg flex-grow">
+                      Gift Box – Mixed
+                    </h4>
+                    <div class="flex justify-between items-center mt-3">
+                      <p class="font-bold text-xl">Rp90.000</p>
+                      <a
+                        href="detail-gift-box.html"
+                        class="buy-button text-xs px-4 py-2 rounded-full"
+                        >Lihat Detail</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide h-auto pb-12" data-category="special">
+                <div class="product-card h-full w-full shadow-lg">
+                  <a href="detail-chocloud-kitkat.html"
+                    ><img
+                      alt="Chocloud x Kitkat – 9 Cubes"
+                      src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754054240/akdr24g2pmhx3qxzuore.jpg"
+                      class="w-full h-56 object-cover"
+                  /></a>
+                  <div class="p-5 flex flex-col flex-grow">
+                    <h4 class="font-semibold text-lg flex-grow">
+                      Chocloud x Kitkat – 9 Cubes
+                    </h4>
+                    <div class="flex justify-between items-center mt-3">
+                      <p class="font-bold text-xl">Rp130.000</p>
+                      <a
+                        href="detail-chocloud-kitkat.html"
+                        class="buy-button text-xs px-4 py-2 rounded-full"
+                        >Lihat Detail</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide h-auto pb-12" data-category="special">
+                <div class="product-card h-full w-full shadow-lg">
+                  <a href="detail-chocloud-dubai.html"
+                    ><img
+                      alt="Chocloud Dubai – 6 Cubes"
+                      src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754054130/epzdkevkffjcxosii6ws.jpg"
+                      class="w-full h-56 object-cover"
+                  /></a>
+                  <div class="p-5 flex flex-col flex-grow">
+                    <h4 class="font-semibold text-lg flex-grow">
+                      Chocloud Dubai – 6 Cubes
+                    </h4>
+                    <div class="flex justify-between items-center mt-3">
+                      <p class="font-bold text-xl">Rp80.000</p>
+                      <a
+                        href="detail-chocloud-dubai.html"
+                        class="buy-button text-xs px-4 py-2 rounded-full"
+                        >Lihat Detail</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide h-auto pb-12" data-category="tiramisu">
+                <div class="product-card h-full w-full shadow-lg">
+                  <a href="detail-tiramisu-chocloud-slice.html"
+                    ><img
+                      alt="Tiramisu x Chocloud – 1 Slice"
+                      src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754053841/m1uf5bmhmf4rpvzlcbj9.jpg"
+                      class="w-full h-56 object-cover"
+                  /></a>
+                  <div class="p-5 flex flex-col flex-grow">
+                    <h4 class="font-semibold text-lg flex-grow">
+                      Tiramisu x Chocloud – 1 Slice
+                    </h4>
+                    <div class="flex justify-between items-center mt-3">
+                      <p class="font-bold text-xl">Rp38.000</p>
+                      <a
+                        href="detail-tiramisu-chocloud-slice.html"
+                        class="buy-button text-xs px-4 py-2 rounded-full"
+                        >Lihat Detail</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide h-auto pb-12" data-category="tiramisu">
+                <div class="product-card h-full w-full shadow-lg">
+                  <a href="detail-matchamissu-chocloud-box.html"
+                    ><img
+                      alt="Matchamissu – 1 Slice"
+                      src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754053545/jtn8kbeuwogetkicvvya.jpg"
+                      class="w-full h-56 object-cover"
+                  /></a>
+                  <div class="p-5 flex flex-col flex-grow">
+                    <h4 class="font-semibold text-lg flex-grow">
+                      Matchamissu – 1 Slice
+                    </h4>
+                    <div class="flex justify-between items-center mt-3">
+                      <p class="font-bold text-xl">Rp42.000</p>
+                      <a
+                        href="detail-matchamissu-chocloud-box.html"
+                        class="buy-button text-xs px-4 py-2 rounded-full"
+                        >Lihat Detail</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide h-auto pb-12" data-category="truflle">
+                <div class="product-card h-full w-full shadow-lg">
+                  <a href="detail-all-mix.html"
+                    ><img
+                      alt="All Mix – 18 Cubes"
+                      src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754053186/zxwnicmdzozlq5gcgmvh.jpg"
+                      class="w-full h-56 object-cover"
+                  /></a>
+                  <div class="p-5 flex flex-col flex-grow">
+                    <h4 class="font-semibold text-lg flex-grow">
+                      All Mix – 18 Cubes
+                    </h4>
+                    <div class="flex justify-between items-center mt-3">
+                      <p class="font-bold text-xl">Rp130.000</p>
+                      <a
+                        href="detail-all-mix.html"
+                        class="buy-button text-xs px-4 py-2 rounded-full"
+                        >Lihat Detail</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide h-auto pb-12" data-category="truffle">
+                <div class="product-card h-full w-full shadow-lg">
+                  <a href="detail-biscoff.html"
+                    ><img
+                      alt="Biscoff – 18 Cubes"
+                      src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754052983/xu83nzfi0f9xdapotmjc.jpg"
+                      class="w-full h-56 object-cover"
+                  /></a>
+                  <div class="p-5 flex flex-col flex-grow">
+                    <h4 class="font-semibold text-lg flex-grow">
+                      Biscoff – 18 Cubes
+                    </h4>
+                    <div class="flex justify-between items-center mt-3">
+                      <p class="font-bold text-xl">Rp112.000</p>
+                      <a
+                        href="detail-biscoff.html"
+                        class="buy-button text-xs px-4 py-2 rounded-full"
+                        >Lihat Detail</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide h-auto pb-12" data-category="popular">
+                <div class="product-card h-full w-full shadow-lg">
+                  <a href="detail-mixmatch.html"
+                    ><img
+                      alt="Mix Match – 18 Cubes"
+                      src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1753985872/mixmatch_x6jaxe.jpg"
+                      class="w-full h-56 object-cover"
+                  /></a>
+                  <div class="p-5 flex flex-col flex-grow">
+                    <h4 class="font-semibold text-lg flex-grow">
+                      Mix Match – 18 Cubes
+                    </h4>
+                    <div class="flex justify-between items-center mt-3">
+                      <p class="font-bold text-xl">Rp112.000</p>
+                      <a
+                        href="detail-mixmatch.html"
+                        class="buy-button text-xs px-4 py-2 rounded-full"
+                        >Lihat Detail</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide h-auto pb-12" data-category="popular">
+                <div class="product-card h-full w-full shadow-lg">
+                  <a href="detail-classic.html"
+                    ><img
+                      alt="Classic – 18 Cubes"
+                      src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1753985873/classic_xe79jq.jpg"
+                      class="w-full h-56 object-cover"
+                  /></a>
+                  <div class="p-5 flex flex-col flex-grow">
+                    <h4 class="font-semibold text-lg flex-grow">
+                      Classic – 18 Cubes
+                    </h4>
+                    <div class="flex justify-between items-center mt-3">
+                      <p class="font-bold text-xl">Rp85.000</p>
+                      <a
+                        href="detail-classic.html"
+                        class="buy-button text-xs px-4 py-2 rounded-full"
+                        >Lihat Detail</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide h-auto pb-12" data-category="truffle">
+                <div class="product-card h-full w-full shadow-lg">
+                  <a href="detail-matcha.html"
+                    ><img
+                      alt="Matcha – 18 Cubes"
+                      src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754052737/rqmralxkq1s4nq3fhk9w.jpg"
+                      class="w-full h-56 object-cover"
+                  /></a>
+                  <div class="p-5 flex flex-col flex-grow">
+                    <h4 class="font-semibold text-lg flex-grow">
+                      Matcha – 18 Cubes
+                    </h4>
+                    <div class="flex justify-between items-center mt-3">
+                      <p class="font-bold text-xl">Rp130.000</p>
+                      <a
+                        href="detail-matcha.html"
+                        class="buy-button text-xs px-4 py-2 rounded-full"
+                        >Lihat Detail</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-controls">
+              <div class="swiper-pagination"></div>
+              <div class="swiper-nav-buttons">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-[#4a2511] text-white/90 py-16 px-6 md:px-20 text-sm">
+      <div class="container mx-auto">
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left"
+        >
+          <div class="flex flex-col items-center md:items-start">
+            <a href="index.html" class="inline-block mb-4">
+              <img
+                src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754056451/logo_iwztru.png"
+                alt="Chocloud Logo"
+                class="h-14 w-auto"
+              />
+            </a>
+            <p
+              class="text-white/70 text-sm max-w-xs mx-auto md:mx-0 text-justify"
+            >
+              Camilan cokelat truffle premium yang menghadirkan kelembutan dalam
+              setiap gigitan.
+            </p>
+          </div>
+          <div class="flex flex-col items-center md:items-start">
+            <h3 class="font-bold text-white text-lg mb-4">Hubungi Kami</h3>
+            <div
+              class="space-y-3 text-white/70 font-light flex flex-col items-center md:items-start"
+            >
+              <p>
+                <a
+                  href="https://maps.app.goo.gl/MJ8SPXcmZPActLzRA?g_st=aw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-white transition-colors"
+                >
+                  Jl. Teuku Umar No. 5, Lebakgede, Coblong, Kota Bandung, 40132
+                </a>
+              </p>
+              <a
+                href="mailto:chocloudijah@gmail.com"
+                class="inline-flex items-center justify-center md:justify-start gap-2 hover:text-white transition-colors"
+              >
+                <i class="fas fa-envelope fa-fw"></i>
+                <span>chocloudijah@gmail.com</span>
+              </a>
+              <a
+                href="https://wa.me/628112292013"
+                target="_blank"
+                class="inline-flex items-center justify-center md:justify-start gap-2 hover:text-white transition-colors"
+              >
+                <i class="fas fa-phone-alt fa-fw"></i>
+                <span>08112292013</span>
+              </a>
+              <div
+                class="flex space-x-4 text-xl justify-center md:justify-start"
+              >
+                <a
+                  href="https://www.facebook.com/share/16g2CgE538/"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a
+                  href="https://wa.me/628112292013"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  ><i class="fab fa-whatsapp"></i
+                ></a>
+                <a
+                  href="https://www.instagram.com/chocloud_bynadi?igsh=bzVncmFjZHFibzN0"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-lg mb-4">Socials</h3>
+            <ul class="space-y-3 text-white/70 font-light mb-6">
+              <li>
+                <a
+                  href="https://wa.me/628112292013"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  >Whatsapp</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/chocloud_bynadi?igsh=bzVncmFjZHFibzN0"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  >Instagram</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.tiktok.com/@chocloud_bynadi?_t=ZS-8yVzkcPkh4E&_r=1"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  >Tiktok</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/share/16g2CgE538/"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  >Facebook</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="text-center text-xs mt-16 border-t border-white/20 pt-8 text-white/60"
+        >
+          <p>
+            <span>© 2025 Chocloud by Nadi. All rights reserved.</span>
+            <span class="mx-2 hidden sm:inline">|</span>
+            <a
+              href="privacy-policy.html"
+              class="hover:text-white transition-colors block sm:inline mt-2 sm:mt-0"
+              >Privacy Policy</a
+            >
+            <span class="mx-2 hidden sm:inline">|</span>
+            <a
+              href="terms.html"
+              class="hover:text-white transition-colors block sm:inline mt-2 sm:mt-0"
+              >Terms & Conditions</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // --- Script untuk Menu Hamburger Mobile ---
+        const hamburgerBtn = document.getElementById("hamburger-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const hamburgerIcon = hamburgerBtn.querySelector("i");
+        hamburgerBtn.addEventListener("click", () => {
+          if (mobileMenu.classList.contains("hidden")) {
+            mobileMenu.classList.remove("hidden");
+            mobileMenu.classList.add(
+              "flex",
+              "flex-col",
+              "absolute",
+              "top-full",
+              "left-0",
+              "w-full",
+              "bg-[#4a2511]",
+              "px-6",
+              "pb-4",
+              "pt-2"
+            );
+            hamburgerIcon.classList.remove("fa-bars");
+            hamburgerIcon.classList.add("fa-xmark");
+          } else {
+            mobileMenu.classList.add("hidden");
+            mobileMenu.classList.remove(
+              "flex",
+              "flex-col",
+              "absolute",
+              "top-full",
+              "left-0",
+              "w-full",
+              "bg-[#4a2511]",
+              "px-6",
+              "pb-4",
+              "pt-2"
+            );
+            hamburgerIcon.classList.remove("fa-xmark");
+            hamburgerIcon.classList.add("fa-bars");
+          }
+        });
+
+        // --- Inisialisasi Slider Produk ---
+        const productSwiper = new Swiper(".product-swiper", {
+          slidesPerView: 2,
+          slidesPerGroup: 2,
+          grid: { rows: 2, fill: "row" },
+          spaceBetween: 16,
+          pagination: {
+            el: ".product-swiper .swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".product-swiper .swiper-button-next",
+            prevEl: ".product-swiper .swiper-button-prev",
+          },
+          breakpoints: {
+            768: {
+              slidesPerView: 3,
+              slidesPerGroup: 3,
+              spaceBetween: 24,
+              grid: { rows: 2, fill: "row" },
+            },
+            1024: {
+              slidesPerView: 4,
+              slidesPerGroup: 4,
+              spaceBetween: 32,
+              grid: { rows: 2, fill: "row" },
+            },
+          },
+          observer: true,
+          observeParents: true,
+        });
+
+        // --- Script untuk Filter Produk ---
+        const tabs = document.querySelectorAll("#filterTabs li");
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            tabs.forEach((t) => t.classList.remove("active"));
+            tab.classList.add("active");
+            const filterValue = tab.getAttribute("data-filter");
+            let visibleSlidesCount = 0;
+            productSwiper.slides.forEach((slide) => {
+              const slideCategory = slide.getAttribute("data-category");
+              if (filterValue === "all" || filterValue === slideCategory) {
+                slide.style.display = "flex";
+                visibleSlidesCount++;
+              } else {
+                slide.style.display = "none";
+              }
+            });
+            const slidesPerView =
+              productSwiper.params.breakpoints[1024].slidesPerView || 4;
+            if (visibleSlidesCount <= slidesPerView) {
+              productSwiper.params.grid.rows = 1;
+            } else {
+              productSwiper.params.grid.rows = 2;
+            }
+            productSwiper.update();
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
