@@ -35,7 +35,7 @@
     </style>
   </head>
   <body class="bg-gray-50">
-    <nav
+      <nav
       class="bg-[#4a2511] flex justify-between items-center px-6 md:px-20 py-3 fixed w-full top-0 z-50 shadow-lg"
     >
       <a href="index.html">
@@ -96,6 +96,80 @@
       <div class="text-white text-2xl cursor-pointer md:hidden">
         <i class="fas fa-bars"></i>
       </div>
+    </nav>
+
+    <nav
+      class="bg-[#4a2511] flex justify-between items-center px-6 md:px-20 py-3 fixed w-full top-0 z-50 shadow-lg"
+    >
+      <a href="index.html">
+        <img
+          src="https://res.cloudinary.com/dlhmvpmc8/image/upload/v1754056451/logo_iwztru.png"
+          alt="Chocloud Logo"
+          class="h-12 w-auto"
+        />
+      </a>
+
+      <ul
+        id="mobile-menu"
+        class="hidden md:flex md:items-center md:space-x-8 text-white text-sm font-light"
+      >
+        <li>
+          <a
+            href="index.html"
+            class="hover:text-[#f4c97a] transition-colors block py-2 md:py-0"
+            >Home</a
+          >
+        </li>
+        <li class="relative group py-4">
+          <a
+            href="tentang.html"
+            class="hover:text-[#f4c97a] transition-colors inline-flex items-center gap-1.5"
+          >
+            Tentang
+            <i class="fas fa-chevron-down text-xs opacity-70"></i>
+          </a>
+          <ul
+            class="absolute left-0 top-full w-48 bg-white text-gray-800 rounded-md shadow-lg py-1 hidden group-hover:block z-10"
+          >
+            <li>
+              <a
+                href="tentang.html#sejarah"
+                class="block px-4 py-2 text-sm hover:bg-gray-100"
+                >Sejarah</a
+              >
+            </li>
+            <li>
+              <a
+                href="tentang.html#visi-misi"
+                class="block px-4 py-2 text-sm hover:bg-gray-100"
+                >Visi & Misi</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a
+            href="informasi.html"
+            class="hover:text-[#f4c97a] transition-colors block py-2 md:py-0"
+            >Informasi</a
+          >
+        </li>
+        <li>
+          <a
+            href="produk.html"
+            class="hover:text-[#f4c97a] transition-colors block py-2 md:py-0"
+            >Produk</a
+          >
+        </li>
+      </ul>
+
+      <div
+        id="hamburger-btn"
+        class="text-white text-2xl cursor-pointer md:hidden"
+      >
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
     </nav>
 
     <main class="pt-24 pb-16">
@@ -313,5 +387,25 @@
         </div>
       </div>
     </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // --- Script untuk Menu Hamburger Mobile ---
+        const hamburgerBtn = document.getElementById("hamburger-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const hamburgerIcon = hamburgerBtn.querySelector("i");
+        if (hamburgerBtn) {
+          hamburgerBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+            if (mobileMenu.classList.contains("hidden")) {
+              hamburgerIcon.classList.remove("fa-xmark");
+              hamburgerIcon.classList.add("fa-bars");
+            } else {
+              hamburgerIcon.classList.remove("fa-bars");
+              hamburgerIcon.classList.add("fa-xmark");
+            }
+          });
+        }
+      });
+    </script>
   </body>
 </html>
