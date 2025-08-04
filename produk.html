@@ -723,41 +723,18 @@
         const hamburgerBtn = document.getElementById("hamburger-btn");
         const mobileMenu = document.getElementById("mobile-menu");
         const hamburgerIcon = hamburgerBtn.querySelector("i");
-        hamburgerBtn.addEventListener("click", () => {
-          if (mobileMenu.classList.contains("hidden")) {
-            mobileMenu.classList.remove("hidden");
-            mobileMenu.classList.add(
-              "flex",
-              "flex-col",
-              "absolute",
-              "top-full",
-              "left-0",
-              "w-full",
-              "bg-[#4a2511]",
-              "px-6",
-              "pb-4",
-              "pt-2"
-            );
-            hamburgerIcon.classList.remove("fa-bars");
-            hamburgerIcon.classList.add("fa-xmark");
-          } else {
-            mobileMenu.classList.add("hidden");
-            mobileMenu.classList.remove(
-              "flex",
-              "flex-col",
-              "absolute",
-              "top-full",
-              "left-0",
-              "w-full",
-              "bg-[#4a2511]",
-              "px-6",
-              "pb-4",
-              "pt-2"
-            );
-            hamburgerIcon.classList.remove("fa-xmark");
-            hamburgerIcon.classList.add("fa-bars");
-          }
-        });
+        if (hamburgerBtn) {
+          hamburgerBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+            if (mobileMenu.classList.contains("hidden")) {
+              hamburgerIcon.classList.remove("fa-xmark");
+              hamburgerIcon.classList.add("fa-bars");
+            } else {
+              hamburgerIcon.classList.remove("fa-bars");
+              hamburgerIcon.classList.add("fa-xmark");
+            }
+          });
+        }
 
         // --- Inisialisasi Slider Produk ---
         const productSwiper = new Swiper(".product-swiper", {

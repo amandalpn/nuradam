@@ -411,44 +411,18 @@
         const hamburgerBtn = document.getElementById("hamburger-btn");
         const mobileMenu = document.getElementById("mobile-menu");
         const hamburgerIcon = hamburgerBtn.querySelector("i");
-        hamburgerBtn.addEventListener("click", () => {
-          const isMenuHidden = mobileMenu.classList.contains("hidden");
-          if (isMenuHidden) {
-            mobileMenu.classList.remove("hidden");
-            mobileMenu.classList.add(
-              "absolute",
-              "top-full",
-              "left-0",
-              "w-full",
-              "bg-[#4a2511]",
-              "flex",
-              "flex-col",
-              "items-center",
-              "space-y-4",
-              "py-4"
-            );
-            mobileMenu.classList.remove("md:flex", "md:space-x-8");
-            hamburgerIcon.classList.remove("fa-bars");
-            hamburgerIcon.classList.add("fa-xmark");
-          } else {
-            mobileMenu.classList.add("hidden");
-            mobileMenu.classList.remove(
-              "absolute",
-              "top-full",
-              "left-0",
-              "w-full",
-              "bg-[#4a2511]",
-              "flex",
-              "flex-col",
-              "items-center",
-              "space-y-4",
-              "py-4"
-            );
-            mobileMenu.classList.add("md:flex", "md:space-x-8");
-            hamburgerIcon.classList.remove("fa-xmark");
-            hamburgerIcon.classList.add("fa-bars");
-          }
-        });
+        if (hamburgerBtn) {
+          hamburgerBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+            if (mobileMenu.classList.contains("hidden")) {
+              hamburgerIcon.classList.remove("fa-xmark");
+              hamburgerIcon.classList.add("fa-bars");
+            } else {
+              hamburgerIcon.classList.remove("fa-bars");
+              hamburgerIcon.classList.add("fa-xmark");
+            }
+          });
+        }
       });
     </script>
   </body>
